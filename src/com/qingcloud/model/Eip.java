@@ -10,7 +10,6 @@ import java.sql.Timestamp;
  *  并随时可以解绑、再分配到其他主机或路由器，如此可以快速替换您的对外主机或路由器。
  * @author cuiyutong 2013-12-25
  * @version v1.0.1
- * @see com.qingcloud.model.request.PublicRequest
  */
 public class Eip{
 	
