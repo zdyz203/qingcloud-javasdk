@@ -14,9 +14,19 @@ public class PublicResponse {
 	 */
 	private String action;
 	/**
+	 * 响应动作
+	 */
+	private String message;
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	/**
 	 * 执行成功与否，0 表示成功，其他值则为错误代码
 	 */
-	private Instance ret_code;
+	private String ret_code;
 	/**
 	 * 数量
 	 */
@@ -24,7 +34,7 @@ public class PublicResponse {
 	/**
 	 * 主机数据列表
 	 */
-	private Instance instance_set;
+	private Instance[] instance_set;
 	
 	
 	
@@ -36,10 +46,10 @@ public class PublicResponse {
 	public void setAction(String action) {
 		this.action = action;
 	}
-	public Instance getRet_code() {
+	public String getRet_code() {
 		return ret_code;
 	}
-	public void setRet_code(Instance retCode) {
+	public void setRet_code(String retCode) {
 		ret_code = retCode;
 	}
 	public Integer getTotal_count() {
@@ -48,10 +58,10 @@ public class PublicResponse {
 	public void setTotal_count(Integer totalCount) {
 		total_count = totalCount;
 	}
-	public Instance getInstance_set() {
+	public Instance[] getInstance_set() {
 		return instance_set;
 	}
-	public void setInstance_set(Instance instanceSet) {
+	public void setInstance_set(Instance[] instanceSet) {
 		instance_set = instanceSet;
 	}
 }

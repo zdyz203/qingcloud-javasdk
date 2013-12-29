@@ -1,6 +1,6 @@
 package com.qingcloud.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -70,11 +70,11 @@ public class Instance {
 	/**
 	 * 主机创建时间, 为UTC时间
 	 */
-	private Timestamp create_time;
+	private Date create_time;
 	/**
 	 * 主机最近一次状态变更时间, 为UTC时间
 	 */
-	private Timestamp status_time;
+	private Date status_time;
 	/**
 	 * 主机的模板信息。
 	 * processor_type： 支持的处理器类型, 有效值为 64bit 和 32bit
@@ -109,7 +109,7 @@ public class Instance {
 	 * nic_id： 主机加入私有网络的网卡ID
 	 * private_ip： 主机位于私有网络中的私有地址
 	 */
-	private Vxnet vxnets;
+	private Vxnet[] vxnets;
 	/**
 	 * 主机的防火墙信息。
 	 * security_group_id： 防火墙ID
@@ -128,9 +128,15 @@ public class Instance {
 	 */
 	private String keypair_ids;
 	
+	/**
+	 * 获取主机ID
+	 */
 	public String getInstance_id() {
 		return instance_id;
 	}
+	/**
+	 * 设置主机ID
+	 */
 	public void setInstance_id(String instanceId) {
 		instance_id = instanceId;
 	}
@@ -176,16 +182,16 @@ public class Instance {
 	public void setTransition_status(String transitionStatus) {
 		transition_status = transitionStatus;
 	}
-	public Timestamp getCreate_time() {
+	public Date getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Timestamp createTime) {
+	public void setCreate_time(Date createTime) {
 		create_time = createTime;
 	}
-	public Timestamp getStatus_time() {
+	public Date getStatus_time() {
 		return status_time;
 	}
-	public void setStatus_time(Timestamp statusTime) {
+	public void setStatus_time(Date statusTime) {
 		status_time = statusTime;
 	}
 	public Image getImage() {
@@ -194,10 +200,10 @@ public class Instance {
 	public void setImage(Image image) {
 		this.image = image;
 	}
-	public Vxnet getVxnets() {
+	public Vxnet[] getVxnets() {
 		return vxnets;
 	}
-	public void setVxnets(Vxnet vxnets) {
+	public void setVxnets(Vxnet[] vxnets) {
 		this.vxnets = vxnets;
 	}
 	public SecurityGroup getSecurity_group() {

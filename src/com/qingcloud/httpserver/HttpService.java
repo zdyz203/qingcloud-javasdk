@@ -6,38 +6,31 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializeConfig;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.alibaba.fastjson.util.TypeUtils;
+import com.qingcloud.exception.QingException;
 import com.qingcloud.model.Eip;
-import com.qingcloud.model.Image;
-import com.qingcloud.model.response.PublicResponse;
-import com.qingcloud.util.QingUtil;
 
 public class HttpService {
 	
-	public String seedSMS(String params)
-	{
+	public static String sendService(String params) throws QingException{
 		StringBuffer document = new StringBuffer();		
-		try{	
-			URL url = new URL("https://api.qingcloud.com/iaas/?action=DescribeInstances"+params);
+		try{
+			URL url = new URL(params);
 			URLConnection conn = url.openConnection();		    
 			BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String line = null;  
 			while ((line = reader.readLine()) != null)	
-				document.append(line + " ");		 
-			reader.close();	
-		}catch(MalformedURLException e) {
-			e.printStackTrace(); 
-		}catch(IOException e){
-			e.printStackTrace();
+				document.append(line + " ");	 
+			reader.close();
+		}catch(MalformedURLException mue) {
+			mue.printStackTrace();
+			throw new QingException(mue.getMessage());
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+			throw new QingException(ioe.getMessage());
 		}catch (Exception e) {
 			e.printStackTrace();
+			throw new QingException(e.getMessage());
 		}
 		return document.toString().trim();
 	}
@@ -84,6 +77,5 @@ public class HttpService {
 //		PublicResponse pr = JSON.parseObject(service.seedSMS("","",""),PublicResponse.class);
 //		System.out.println(pr.getRet_code());
 //		System.out.println(pr.getMessage());
-		
 	}
 }
