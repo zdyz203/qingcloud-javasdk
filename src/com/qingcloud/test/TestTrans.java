@@ -12,8 +12,8 @@ import com.qingcloud.model.trans.Trans;
 public class TestTrans {
 	
 	public static void main(String[] args) throws NoSuchFieldException, Exception {
-		QingConnector qc = new QingConnector("https://api.qingcloud.com/iaas/","AHWWMNZAZANMVXEDYGOQ"
-				,"tPDFuwrXLDEwdnhENhoS1hJYgzuTafm7Luxl2ywe");
+		QingConnector qc = new QingConnector("https://api.qingcloud.com/iaas/",""
+				,"");
 		PublicRequest pr = new PublicRequest();
 		pr.setZone("pek1");
 		pr.setSignature_method("HmacSHA1");
